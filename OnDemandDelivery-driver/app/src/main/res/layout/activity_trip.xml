@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarCart"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/colorPrimary"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        app:title="@string/txtAddress"
+        app:titleTextColor="@color/colorWhite"/>
+
+    <RelativeLayout
+        android:layout_below="@id/toolbarCart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:map="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            map:mapType="normal"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:id="@+id/trip_bottom_relative_layout"
+            android:background="#ffffff"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:clickable="true"
+
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:background="?attr/selectableItemBackground"
+                android:id="@+id/trip_btn_view_details"
+                android:text="View Details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ng.max.slideview.SlideView
+                android:id="@+id/slideView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/trip_btn_view_details"
+                app:sv_buttonBackgroundColor="@color/colorGreen"
+                app:sv_buttonImage="@drawable/ic_keyboard_arrow_right_black_24dp"
+                app:sv_slideBackgroundColor="@color/colorOrange"
+                app:sv_slideText="@string/text_confirm"
+                app:sv_slideTextColor="#ffffff"
+                app:sv_slideTextSize="16sp"
+                app:sv_animateSlideText="true"
+                app:sv_reverseSlide="false"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:layout_marginBottom="18dp"
+                 />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

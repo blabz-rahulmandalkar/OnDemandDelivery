@@ -2,6 +2,7 @@ package com.driverapp;
 
 import android.content.SharedPreferences;
 import android.support.multidex.MultiDexApplication;
+import android.util.Log;
 
 import com.teliver.sdk.core.TLog;
 import com.teliver.sdk.core.Teliver;
@@ -9,6 +10,7 @@ import com.teliver.sdk.core.Teliver;
 
 public class Application extends MultiDexApplication {
 
+    private String TAG = "Application";
     private SharedPreferences sharedPreferences;
 
     private SharedPreferences.Editor editor;
@@ -20,6 +22,7 @@ public class Application extends MultiDexApplication {
         TLog.setVisible(true);
         sharedPreferences = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
         editor = sharedPreferences.edit();
+        Log.i(TAG,BuildConfig.TeliverKey);
         editor.apply();
     }
 

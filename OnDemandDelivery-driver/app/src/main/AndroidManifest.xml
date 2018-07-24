@@ -18,20 +18,17 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyA2Nva5bEujY6qBDZUtVPvRtXm2q8FHdAI" />
 
-        <activity android:name=".activities.MainActivity">
-
-        </activity>
-
         <service android:name=".FirebaseMessaging">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
-        <activity android:name=".activities.HomeActivity">
+        <activity android:name=".activities.HomeActivity"></activity>
+        <activity android:name=".activities.TripActivity">
 
         </activity>
-        <activity android:name=".activities.TripActivity">
+        <activity android:name=".activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

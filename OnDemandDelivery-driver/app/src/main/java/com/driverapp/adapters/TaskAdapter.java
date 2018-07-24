@@ -12,9 +12,6 @@ import com.driverapp.models.TaskModel;
 
 import java.util.List;
 
-/**
- * Created by bridgelabz on 20/07/18.
- */
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder> {
 
@@ -28,6 +25,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     public class TaskViewHolder extends RecyclerView.ViewHolder{
 
         TextView tvDate,tvStatus,tvDropAddress;
+
         public TaskViewHolder(View view){
             super(view);
             tvDate = (TextView) view.findViewById(R.id.card_task_tv_date);

@@ -103,21 +103,17 @@ public class TripActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        Teliver.identifyUser(new UserBuilder(Constants.ID_DRIVER).setPhone("9535536188").setEmail("arunakush6@gmail.com").setUserType(UserBuilder.USER_TYPE.OPERATOR).registerPush().build());
-
-        Log.i(TAG,"+++++++++++++++++++++++++++= Driver is created++++++++++++");
+        Teliver.identifyUser(new UserBuilder(Constants.DRIVER_ID).setPhone(Constants.DRIVER_MOBILE).setEmail(Constants.DRIVER_EMAIL).setUserType(UserBuilder.USER_TYPE.OPERATOR).registerPush().build());
         TLog.setVisible(true);
         application = (com.driverapp.Application) getApplicationContext();
         trackingId = application.getStringInPref(Constants.KEY_TASK_ID);
-        if (trackingId!=null) {
-            Log.i(TAG + "TrackID", trackingId);
-        }
         status = application.getStringInPref(Constants.KEY_TASK_STATUS);
         relativeLayout = findViewById(R.id.trip_bottom_relative_layout);
         LocalBroadcastManager.getInstance(this).registerReceiver(receiver, new IntentFilter("message"));
         initialiseView();
         initMap();
         if (trackingId!=null){
+            Log.i(TAG + "TrackingID",trackingId);
             getTaskDetail();
         }else{
             relativeLayout.setVisibility(View.GONE);

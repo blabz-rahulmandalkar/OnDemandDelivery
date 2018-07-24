@@ -13,6 +13,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -54,6 +55,9 @@ public class Utils {
         return networkInfo!=null && networkInfo.isConnectedOrConnecting();
     }
 
+    public static void showToast(Context context, String message){
+        Toast.makeText(context,message,Toast.LENGTH_SHORT).show();
+    }
 
     public static boolean checkPermission(Activity context) {
         if (Build.VERSION.SDK_INT >= 23) {

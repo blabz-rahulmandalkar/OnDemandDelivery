@@ -16,22 +16,23 @@ public class Constants {
     public static final String API_GET_TASKS = "task/list";
     public static final String API_GET_TRIPS = "trips";
 
-    //TODO :Driver ID
-    public static final String ID_DRIVER = "aruna_driver";
-
+    //TODO: APP
     public static final String APP_NAME  = "Teliver Driver";
+    public static final String APP_NAME_ATTRIBUTED = "<font><b>SOS</b>Care</font>";
 
+    //TODO :Driver ID
+    public static final String DRIVER_ID = "aruna_driver";
+    public static final String DRIVER_MOBILE = "9535536188";
+    public static final String DRIVER_EMAIL = "arunakush6@gmail.com";
 
     //TODO:KEYS
     public static final String KEY_TASK_ID = "task_id";
     public static final String KEY_TASK_STATUS = "status";
     public static final String KEY_TASK_D = "task_id";
-
     public static final String KEY_PICKUP_LATITUDE = "pickup_latitude";
     public static final String KEY_PICKUP_LONGITUDE = "pickup_longitude";
     public static final String KEY_DROP_LATITUDE = "drop_latitude";
     public static final String KEY_DROP_LONGITUDE = "drop_longitude";
-
 
     //TODO: TASK STATUS
     public static final String STATUS_CREATED = "created";
@@ -42,12 +43,10 @@ public class Constants {
     public static final String STATUS_CANCELLED = "cancelled";
     public static final String STATUS_COMPLETED = "completed";
     public static final String STATUS_NO_TASK = "no_task";
-
     public static final String STATUS_TRIP_ACCEPTED = "trip_accepted";
     public static final String STATUS_TRIP_STARTED = "trip_started";
     public static final String STATUS_TRIP_PICKUPED = "trip_pickeup";
     public static final String STATUS_TRIP_DROPPED = "trip_dropped";
-
 
 
 }

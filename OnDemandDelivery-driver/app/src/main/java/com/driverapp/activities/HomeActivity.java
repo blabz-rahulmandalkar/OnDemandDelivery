@@ -67,7 +67,7 @@ public class HomeActivity extends AppCompatActivity implements TaskAdapter.Listn
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        Teliver.identifyUser(new UserBuilder(Constants.ID_DRIVER).setPhone("9860616030").setEmail("rahul431@.gmail.com").setUserType(UserBuilder.USER_TYPE.OPERATOR).registerPush().build());
+        Teliver.identifyUser(new UserBuilder(Constants.DRIVER_ID).setPhone("9860616030").setEmail("rahul431@.gmail.com").setUserType(UserBuilder.USER_TYPE.OPERATOR).registerPush().build());
 
     }
 
@@ -77,7 +77,7 @@ public class HomeActivity extends AppCompatActivity implements TaskAdapter.Listn
         recyclerView = (RecyclerView) findViewById(R.id.home_recyclerview);
         layoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);
-        setTitle(Constants.APP_NAME + " - "+Constants.ID_DRIVER);
+        setTitle(Constants.APP_NAME + " - "+Constants.DRIVER_ID);
         btnViewCurrentTask = findViewById(R.id.home_view_current_task_btn);
         btnViewCurrentTask.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,7 +101,7 @@ public class HomeActivity extends AppCompatActivity implements TaskAdapter.Listn
             progressDialog.setIndeterminate(true);
             progressDialog.setMessage("Getting Tasks..");
             progressDialog.show();
-            Call<TaskResponse> call = apiInterface.getTaskList(Constants.API_KEY, Constants.ID_DRIVER);
+            Call<TaskResponse> call = apiInterface.getTaskList(Constants.API_KEY, Constants.DRIVER_ID);
             call.enqueue(new Callback<TaskResponse>() {
                 @Override
                 public void onResponse(Call<TaskResponse> call, Response<TaskResponse> response) {
@@ -192,6 +192,7 @@ public class HomeActivity extends AppCompatActivity implements TaskAdapter.Listn
                     progressDialog.setIndeterminate(true);
                     progressDialog.setMessage("Rejecting Task");
                     progressDialog.show();
+
                     Teliver.rejectTask(taskID, new EventListener() {
                         @Override
                         public void onSuccess(String response) {

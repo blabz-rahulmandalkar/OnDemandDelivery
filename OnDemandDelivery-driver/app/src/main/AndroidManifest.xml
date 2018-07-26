@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
 
     <application
         android:name=".Application"
@@ -18,22 +20,29 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyA2Nva5bEujY6qBDZUtVPvRtXm2q8FHdAI" />
 
-        <service android:name=".FirebaseMessaging">
+        <service android:name=".services.FirebaseMessaging">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
         <activity android:name=".activities.HomeActivity"></activity>
-        <activity android:name=".activities.TripActivity">
-
-        </activity>
-        <activity android:name=".activities.LoginActivity">
+        <activity android:name=".activities.HomeActivity2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".activities.HistoryActivity">
+
+        </activity>
+
+        <activity android:name=".activities.TripActivity">
+
+        </activity>
+        <activity android:name=".activities.LoginActivity" >
+
         </activity>
     </application>
 

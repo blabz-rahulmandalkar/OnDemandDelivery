@@ -1,6 +1,7 @@
 package com.driverapp.activities;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
@@ -38,6 +39,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
@@ -55,6 +57,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.maps.model.SquareCap;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.teliver.sdk.core.EventListener;
 import com.teliver.sdk.core.TLog;
 import com.teliver.sdk.core.TaskListener;
@@ -80,6 +84,7 @@ public class TripActivity extends AppCompatActivity implements OnMapReadyCallbac
     public static final String TAG = "TripActivity";
     Toolbar toolbar;
     GoogleMap googleMap;
+    Marker ourGlobalMarker;
     SlideView slideView;
     Button btnViewDetails;
     String trackingId;
@@ -425,10 +430,11 @@ public class TripActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == Constants.SHOW_GPS_DIALOG && resultCode == RESULT_OK)
-            Toast.makeText(TripActivity.this, "Gps is turned on", Toast.LENGTH_SHORT).show();
-        else if (requestCode == Constants.SHOW_GPS_DIALOG && resultCode == RESULT_CANCELED)
+        if (requestCode == Constants.SHOW_GPS_DIALOG && resultCode == RESULT_OK) {
+            requestLocationUpdates();
+        }else if (requestCode == Constants.SHOW_GPS_DIALOG && resultCode == RESULT_CANCELED) {
             finish();
+        }
     }
 
     //TODO:Check Location Permission
@@ -452,13 +458,39 @@ public class TripActivity extends AppCompatActivity implements OnMapReadyCallbac
     private void requestLocationUpdates(){
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (checkIfAlreadyhavePermission()) {
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
-                    6000, 5, this);
-            Location location = locationManager.getLastKnownLocation(locationManager.GPS_PROVIDER);
-            updateDriverLocation(location);
+            if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
+                        6000, 5, this);
+                getLastLocationNewMethod();
+            }else{
+                checkGps();
+            }
         }else{
             requestForLocationPermission();
         }
+    }
+
+    @SuppressLint("MissingPermission")
+    private void getLastLocationNewMethod(){
+        FusedLocationProviderClient mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        mFusedLocationClient.getLastLocation()
+                .addOnSuccessListener(new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        if (location != null) {
+                            updateDriverLocation(location);
+                        }else{
+                            getLastLocationNewMethod();
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d(TAG, "Error trying to get last GPS location");
+                        e.printStackTrace();
+                    }
+                });
     }
 
     //TODO:Request for location permission
@@ -594,12 +626,12 @@ public class TripActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public void onProviderEnabled(String provider) {
-
+        checkGps();
     }
 
     @Override
     public void onProviderDisabled(String provider) {
-
+        checkGps();
     }
 
     private void drawRoutes(double pickLat,double pickLong,double dropLat, double dropLong){
@@ -614,5 +646,15 @@ public class TripActivity extends AppCompatActivity implements OnMapReadyCallbac
             }).startRouteSearch();
         }
     }
+
+//    private void updateMarkerPosition(Location newLocation) {
+//        LatLng newLatLng = new LatLng(newLocation.getLatitude(), newLocation.getLongitude());
+//        if(ourGlobalMarker == null) { // First time adding marker to map
+//            ourGlobalMarker = googleMap.addMarker(new MarkerOptions().position(newLatLng));
+//        }
+//        else {
+//            MarkerAnimation.animateMarkerToICS(ourGlobalMarker, newLatLng, new LatLngInterpolator.Spherical());
+//        }
+//    }
 
 }

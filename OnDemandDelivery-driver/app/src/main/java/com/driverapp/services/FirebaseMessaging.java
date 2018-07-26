@@ -1,4 +1,4 @@
-package com.driverapp;
+package com.driverapp.services;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -8,6 +8,10 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
+import com.driverapp.Application;
+import com.driverapp.Constants;
+import com.driverapp.R;
+import com.driverapp.Utils;
 import com.driverapp.activities.HomeActivity;
 import com.driverapp.activities.TripActivity;
 import com.driverapp.models.TaskModel;

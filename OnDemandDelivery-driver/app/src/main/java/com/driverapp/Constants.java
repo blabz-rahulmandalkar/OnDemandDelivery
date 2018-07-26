@@ -48,5 +48,17 @@ public class Constants {
     public static final String STATUS_TRIP_PICKUPED = "trip_pickeup";
     public static final String STATUS_TRIP_DROPPED = "trip_dropped";
 
+    //TODO: MESSAGE
+    public static final String MSG_INVALID_MOBILE = "Invalid Mobile Number";
+    public static final String MSG_INVALID_OTP = "OTP should be 4 digit";
+    public static final String MSG_RESENDING_OTP = "Resending OTP ..";
+
+
+    //TODO: TEXT
+    public static final String TXT_GET_OTP = "Get OTP";
+    public static final String TXT_LOGIN = "Login";
+    public static final String TXT_RESEND_OTP = "Resend OTP";
+
+
 
 }

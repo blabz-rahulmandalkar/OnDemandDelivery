@@ -39,19 +39,22 @@
     <string name="packingCharge">₹8.00</string>
     <string name="resPromo">- ₹57.00</string>
 
-    <!--fonts -->
-
-    <string name="font_bold">fonts/roboto_bold.ttf</string>
-    <string name="font_regular">fonts/font_rg.ttf</string>
-    <string name="font_lt">fonts/roboto_light.ttf</string>
-    <string name="font_medium">fonts/roboto_medium.ttf</string>
-
-
-    //New
+    <!-- //TODO: TEXT  -->
+    <string name="txtGetOTP">Get OTP</string>
+    <string name="txtLogin">Login</string>
+    <string name="txtResendOTP">Resen OTP</string>
     <string name="text_confirm">Confirm</string>
     <string name="text_pickup">Picked-up</string>
     <string name="text_drop">Dropped</string>
     <string name="text_close">Close Trip</string>
 
+    <!-- //TODO: MESSAGE  -->
+    <string name="msgInvalidMobile">Invalid Mobile Number</string>
+    <string name="msgInvalidOTP">Invalid OTP</string>
 
+    <!--//TODO: FONT -->
+    <string name="font_bold">fonts/roboto_bold.ttf</string>
+    <string name="font_regular">fonts/font_rg.ttf</string>
+    <string name="font_lt">fonts/roboto_light.ttf</string>
+    <string name="font_medium">fonts/roboto_medium.ttf</string>
 </resources>

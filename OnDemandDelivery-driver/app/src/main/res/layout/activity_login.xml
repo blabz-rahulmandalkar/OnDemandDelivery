@@ -60,6 +60,7 @@
             android:layout_height="wrap_content">
 
             <RelativeLayout
+                android:id="@+id/login_mobile_view_layout"
                 android:layout_width="match_parent"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/bg_textfield"
@@ -94,10 +95,12 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/login_otp_view_layout"
                 android:layout_width="match_parent"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/bg_textfield"
                 android:backgroundTint="#55ffffff"
+                android:visibility="gone"
                 android:layout_height="48dp">
 
                 <ImageView
@@ -131,7 +134,7 @@
             <Button
                 android:id="@+id/login_btn_login"
                 android:layout_width="match_parent"
-                android:text="Login"
+                android:text="@string/txtGetOTP"
                 android:textSize="18sp"
                 android:textColor="@color/colorWhite"
                 android:textAllCaps="false"
@@ -145,9 +148,10 @@
                 android:layout_width="wrap_content"
                 android:paddingLeft="16dp"
                 android:clickable="true"
+                android:visibility="gone"
                 android:layout_marginTop="8dp"
                 android:paddingRight="16dp"
-                android:text="Resend OTP"
+                android:text="@string/txtResendOTP"
                 android:textSize="18sp"
                 android:textColor="@color/colorWhite"
                 android:textAllCaps="false"

@@ -17,7 +17,6 @@
             android:id="@+id/card_task_imageview"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:tint="@color/colorOrange"
             android:src="@drawable/ic_directions_car_black_24dp"/>
 
         <LinearLayout
